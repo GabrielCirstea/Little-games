@@ -9,4 +9,6 @@ Un joc de gandire pentru prieteni. Scopul, ca in orice joc, este sa acumulezi ca
   * se introduc coordonatele: - coloana linia - ex: a1
   * analog pt al doilea punct, daca coordonatele sunt valide se va trage linia, altfel se va repeta proceseul
 * Jucatorul care inchide celula primeste punctul
-* Cel cu cele mai multe puncte castiga
+* Cel cu cele mai multe puncte castiga  
+
+![demo](/images/demoBiscuiti.PNG)
