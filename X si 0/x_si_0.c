@@ -19,7 +19,7 @@ void afisare(int n,char a[matrix_size][matrix_size])
         printf("\n");
     }
 }
-int verificare_diagonale(int n,char a[matrix_size][matrix_size],int linie,int coloana,char p)
+int verificare_diagonale(int n,char a[matrix_size][matrix_size], char p)
 {
     int i;
     for(i=0;i<n;i++)
@@ -46,6 +46,7 @@ void mutare(int n,char a[matrix_size][matrix_size],int P,int *gameOver)
     int linie,coloana;
     printf("linia si coloana:");
     scanf("%d%d",&linie,&coloana);
+    getc(stdin);
     if(linie<n && linie>=0 && coloana<n && coloana>=0 && !a[linie][coloana])
         {
             if(P) a[linie][coloana]='X';
@@ -58,7 +59,7 @@ void mutare(int n,char a[matrix_size][matrix_size],int P,int *gameOver)
     }
     printf("%c\n",a[linie][coloana]);
     if(linie==coloana || linie+coloana==n-1)    ///daca e pe diagonala sau in colt
-        {if(verificare_diagonale(n,a,linie,coloana,a[linie][coloana])) *gameOver=1;}
+        {if(verificare_diagonale(n,a,a[linie][coloana])) *gameOver=1;}
     //~ else    ///verificam pe linii
         if(verificare(n,a,linie,coloana,a[linie][coloana])) *gameOver=1;
 }
@@ -76,6 +77,10 @@ void game()
         mutare(n,a,P,&gameOver);
         P=(P+1)%2;
     }
+    ///last print
+    system("clear");
+    afisare(n,a);
+    
     if(P) printf("0 a castigat\n"); ///P se mai schimba o data dupa terminarea jocului
     else printf("X a castigat\n");
     printf("Apasa enter pt a iesi");
@@ -89,6 +94,7 @@ int main()
     char opt;
     while(Running)
     {
+        system("clear");
         printf("Salutare si bine ai venita la X si O\n");
         printf("Y pentru a incepe\n");
         printf("q pentru a iesi\n");
