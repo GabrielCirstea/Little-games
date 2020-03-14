@@ -11,4 +11,4 @@ Un joc de teris, dar harta este o variabila de 8 bytes, sau 64 de biti  <br>
   * cele negative spre stanga
 * Jocul se termina cand urmatoarea pisa nu mai are loc pe harta.
 
-![demo](demoTetribit.PNG)
+![demo](demoTetribit.png)

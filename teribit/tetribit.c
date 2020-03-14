@@ -121,7 +121,6 @@ void pregatire_piesa(eMare H, unsigned *piesuta,int *pozitiune)
     int pozitie = *pozitiune;
     unsigned piesa_p = *piesuta;
     pozitie=pozitie_piesa(piesa_p);
-    //printf("\n%d", pozitie);
     piesa_p>>=pozitie;
     pozitie+=7*sizeof(H);
 
@@ -157,13 +156,6 @@ int main()
     piesa_p = initiere_piesa();
     pregatire_piesa(H, &piesa_p, &pozitie);
     piesa = piesa_p;
-    /*pozitie=pozitie_piesa(piesa_p);
-
-    //printf("\n%d", pozitie);
-    piesa_p>>=pozitie;
-    piesa=piesa_p;
-    pozitie+=7*sizeof(H);
-    harta(H^(piesa<<pozitie));*/
 
     while(!gameOver)        ///mutarea pieselor
     {
@@ -171,9 +163,6 @@ int main()
         printf("mutare: ");
         scanf("%d",&mutare);
 
-
-        //printf("Da mutarea boss:");
-        //piesa=piesa_p;
 
 
         pozitie=verificare(H,piesa,pozitie,piesa_p,mutare);
@@ -186,8 +175,6 @@ int main()
         {
             H=(H^(piesa<<pozitie)); ///se salveaza harta cu piesa
             verificareharta(&H);
-            //pozitie=7*sizeof(H)+rand()%8;
-            //piesa=piesa_p;
             ///mutare noua
             piesa_p = initiere_piesa();
             pregatire_piesa(H,&piesa_p, &pozitie);
@@ -197,21 +184,15 @@ int main()
             scanf("%d",&mutare);
             if((piesa<<pozitie)&H)
                 gameOver=1;
-            //piesa<<=pozitie;
-            //system("cls");
-            //harta(C^(piesa<<pozitie));
         }
         if(coborare(H,piesa,pozitie)==0)
         {
             H=(H^(piesa<<pozitie));
             //harta(H);
             verificareharta(&H);
-            //pozitie=7*sizeof(H)+rand()%8;
-            //piesa=piesa_p;
             piesa_p = initiere_piesa();
             pregatire_piesa(H,&piesa_p, &pozitie);
             piesa=piesa_p;
-            //printf("\n%d", pozitie);
             printf("mutare: ");
             scanf("%d",&mutare);
             if((piesa<<pozitie)&H)
