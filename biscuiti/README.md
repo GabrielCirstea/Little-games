@@ -9,4 +9,4 @@ Un joc de gandire pentru prieteni. Scopul, ca in orice joc, este sa acumulezi ca
 * Jucatorul care inchide celula primeste punctul
 * Cel cu cele mai multe puncte castiga  
 
-![demo](demoBiscuiti.png)
+![demo](demoBiscuiti.PNG)
