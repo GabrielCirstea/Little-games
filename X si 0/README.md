@@ -7,4 +7,4 @@ Clasicul joc de X si 0<br>
 * Fiecare jucator alege coordonatele punctului in care vrea sa puna X respectiv 0
 * Cel care completeaza o linie(verticala/orizontala) sau o diagonala, castiga.  
 
-![demo](../images/demoX_si_0.png)
+![demo](demoX_si_0.png)
