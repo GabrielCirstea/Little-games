@@ -9,4 +9,4 @@
 ## Scop:
 Sparge cat mai multi meteoriti folosind cat mai putine click-uri.
 
-** Give it a try: ** https://gabrielcirstea.github.io/Little-games/Meteoriti/main.html
+**Give it a try:** https://gabrielcirstea.github.io/Little-games/Meteoriti/main.html
