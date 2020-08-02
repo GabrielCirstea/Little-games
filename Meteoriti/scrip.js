@@ -5,6 +5,7 @@ var tc;
 var gs=10;  // graphics multiplier
 var shots = new Array();
 var asteroizi = new Array();
+
 function setUp(){
   console.log("Se face setup-ul!");
   document.getElementById("canvas").addEventListener("click",clickPresed);
@@ -15,10 +16,13 @@ function setUp(){
   rect = c.getBoundingClientRect();
   tc = c.width/gs;  // marimea mapei
   //startAnimation();
+		// golim asteroizii
+  asteroizi = [];		// sa nu mai adaugam altii daca se apasa insistent pe buton
   initAsteroizi(10);
   clearInterval(timer);
-  var timer = setInterval(game,1000/15);
+  var timer = setInterval(game,1000/15);		// game loop
 }
+
 function startAnimation(){
   let size = 10;
   ctx.fillStyle="white";
@@ -30,6 +34,7 @@ function startAnimation(){
     size++;
   }
 }
+
 var score={
   points: 0,
   clicks:0,
@@ -50,10 +55,12 @@ var score={
     this.combo();
   }
 }
+
 Player = {
   X : 0,
   Y : 0
 }
+
 class Shot{
   constructor(x,y){
     this.x = x;
@@ -75,15 +82,17 @@ class Shot{
     this.draw();
   }
 }
+
 class Asteroid{
   // o sa plece dintr-o parte a ecranului
-  // merge intr0o singura directie
+  // merge intr-o singura directie
   constructor(){
     this.speed = 0.5;
     this.gs = 15;
     this.rewind();
     this.reborn = null;
   }
+
   makeItDone(instant=false){
     this.done = true;
     if(this.reborn != undefined && this.reborn != null)
@@ -95,6 +104,7 @@ class Asteroid{
       this.reborn = setTimeout(function(){_this.rewind();},500);
     }
   }
+
   move(){
     this.x+=this.vx;
     this.y+=this.vy;
@@ -107,10 +117,12 @@ class Asteroid{
       this.draw();
     }
   }
+
   draw(){
     ctx.fillStyle = "red";
     ctx.fillRect(this.x*gs-this.gs,this.y*gs-this.gs,gs+this.gs,gs+this.gs)
   }
+
   chekcCollision(){
     if(this.done)
       return;
@@ -135,6 +147,7 @@ class Asteroid{
       }
     }
   } // checkCollision
+
   rewind(){
     this.vx = 0;
     this.vy = 0;
@@ -167,10 +180,12 @@ class Asteroid{
     this.reborn = null;
   }
 } // calss
+
 function shot(x,y){
   // lanseaza proiectilele
   shots.push(new Shot(x,y))
 }
+
 function moves(){
   //ctx.clearRect(0,0,c.width,c.height);
   ctx.fillStyle="white";
@@ -196,17 +211,23 @@ function moves(){
     n--;
   }
 }
+
 function clickPresed(){
   Player.X = (event.clientX - rect.left)/gs;
   Player.Y = (event.clientY - rect.top)/gs;
+		// on every click lose a point
+  if(score.points > 0)
+    score.points--;
   shot(Player.X,Player.Y);
   score.clicks++;
 }
-function game(){
+
+function game(){		// un fel de functie principala?
   moves();
   score.docPoints.innerHTML=score.points;
   //score.docCombo.innerHTML=score.comboMulti;
 }
+
 function initAsteroizi(n){
   for (var i = 0; i < n; i++) {
     asteroizi.push(new Asteroid);
